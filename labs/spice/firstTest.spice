@@ -1,0 +1,20 @@
+
+*** NETLIST ***
+* DGSS for mosfet
+M1 vdd n1 0 0  nmos w=1.8u l=1.2u
+R1 in n1 55
+Vdd vdd 0 2.5
+Vin in 0 2.5
+
+*** .include 
+.LIB "models1.2u.sp" cmos_models
+
+*********
+** SIMULATION
+*********
+.op
+*.dc Vdd 0 2.5 0.1 Vin 0 2.5 0.5
+.dc Vin 0 2.5 0.1 Vdd 0 2.5 2.5
+
+.end
+

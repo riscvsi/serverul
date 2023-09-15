@@ -1,0 +1,19 @@
+*RC transient circuit 
+*connect resistor between 2 points
+R 1 2 1ku
+*Connect a capacitor between points 2 and 0
+C 2 0 1u
+*add a piecewise linear voltage source between 1 and 0
+Vin 1 0 pwl (0 0 0ms  0 0ms 5V 20ms 5V)
+
+**transient analysis 
+.tran 0.02ms 20ms
+*
+**define control 
+.control 
+run
+**plot input and output voltages
+plot v(1) v(2) 
+.endc
+.end
+

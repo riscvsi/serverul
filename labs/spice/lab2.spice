@@ -1,0 +1,23 @@
+*RC transient circuit 
+*connect resistor between 2 points
+R 1 2 1ku
+*Connect a capacitor between points 2 and 0
+C 2 0 2u
+*add a piecewise linear voltage source between 1 and 0
+*Vin 1 0 pwl (0 0 10ms  0 11ms 5V 20ms 5V)
+* creating a ac source and 0 dc
+Vin 1 0 dc 0 ac 1
+
+**ac analysis
+.ac dec 10 1 1Meg
+*
+**define control 
+.control 
+run
+**plot input and output voltages
+plot vdb(2) xlog
+* phase degrere plot 
+plot {57.29*vp(2)} xlog
+.endc
+.end
+

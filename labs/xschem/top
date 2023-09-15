@@ -1,0 +1,249 @@
+**.subckt top
+x1  test_nmos
+x2  test_pmos
+x5  test_inv
+x3  test_res
+x4  test_bipolar
+x6  test_diode
+x7  test_comparator
+x11  test_nmos_sizes
+x12  test_stdcells
+x14  test_varactor
+x15  test_vpp_cap
+x18  test_mim_cap
+x20  test_ff
+x21  test_analog
+x25  tb_bandgap
+x28  test_carry_lookahead
+v0 @1 net2 @1 GND  3
+v1 @1 net1 @1 GND  0
+**** begin user architecture code
+
+
+** opencircuitdesign pdks install
+.lib $::SKYWATER_MODELS/sky130.lib.spice tt
+
+
+
+
+
+
+.lib /home/rcg/tools/OpenLane/OpenLane/pdks/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+.control
+	dc v0 0 3 0.01
+	plot -i(v1)
+.endc
+
+.save all
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  sky130_tests/test_nmos.sym # of pins=0
+
+.subckt test_nmos  
+*.ipin G1v8
+*.ipin D1v8
+*.ipin B
+Vd1 @1 D1v8 @1 net1  0
+.probe i( Vd1 )
+Vd3 @1 D3v3 @1 net2  0
+.probe i( Vd3 )
+Vd2 @1 D1v8 @1 net3  0
+.probe i( Vd2 )
+Vd4 @1 D5v0 @1 net4  0
+.probe i( Vd4 )
+E1 @1 D5v0 @1 0 @1 D1v8 @1 0  '5
+E2 @1 D3v3 @1 0 @1 D1v8 @1 0  '3.3
+E3 @1 G5v0 @1 0 @1 G1v8 @1 0  '5
+E4 @1 G3v3 @1 0 @1 G1v8 @1 0  '3.3
+Vd5 @1 D10v5 @1 net5  0
+.probe i( Vd5 )
+E5 @1 D10v5 @1 0 @1 D1v8 @1 0  '10.5
+E6 @1 D16v0 @1 0 @1 D1v8 @1 0  '16.0
+Vd6 @1 D16v0 @1 net6  0
+.probe i( Vd6 )
+Vd7 @1 D1v8 @1 net7  0
+.probe i( Vd7 )
+E7 @1 D20v0 @1 0 @1 D1v8 @1 0  '20.0
+*  r1 -  ngspice_get_value  IS MISSING !!!!
+*  r2 -  ngspice_get_value  IS MISSING !!!!
+Vd8 @1 D1v8 @1 net8  0
+.probe i( Vd8 )
+Vd9 @1 D1v8 @1 net9  0
+.probe i( Vd9 )
+*  r3 -  ngspice_get_value  IS MISSING !!!!
+.probe tran v( @1 G1v8  )
+**** begin user architecture code
+**** end user architecture code
+.ends
+
+
+* expanding   symbol:  sky130_tests/test_pmos.sym # of pins=0
+
+.subckt test_pmos  
+*.ipin G1v8
+*.ipin D1v8
+*.ipin B
+Vd1 @1 net1 @1 D1v8  0
+.probe i( Vd1 )
+Vd2 @1 net2 @1 D1v8  0
+.probe i( Vd2 )
+E1 @1 D5v0 @1 0 @1 D1v8 @1 0  '5
+E2 @1 D3v3 @1 0 @1 D1v8 @1 0  '3.3
+E3 @1 G5v0 @1 0 @1 G1v8 @1 0  '5
+E4 @1 G3v3 @1 0 @1 G1v8 @1 0  '3.3
+E5 @1 D10v5 @1 0 @1 D1v8 @1 0  '10.5
+Vd3 @1 net3 @1 D1v8  0
+.probe i( Vd3 )
+Vd4 @1 net4 @1 D10v5  0
+.probe i( Vd4 )
+Vd5 @1 net5 @1 D16v0  0
+.probe i( Vd5 )
+E6 @1 D16v0 @1 0 @1 D1v8 @1 0  '16.0
+E7 @1 D20v0 @1 0 @1 D1v8 @1 0  '20.0
+Vd6 @1 net6 @1 D20v0  0
+.probe i( Vd6 )
+**** begin user architecture code
+**** end user architecture code
+.ends
+
+
+* expanding   symbol:  sky130_tests/test_inv.sym # of pins=0
+
+.subckt test_inv  
+C1 @1 Z[1]  0 4f m=1
+C2 @1 Z[2]  0 4f m=1
+C3 @1 Z[3]  0 4f m=1
+C4 @1 Z[4]  0 4f m=1
+C5 @1 Z[5]  0 4f m=1
+C6 @1 Z[6]  0 4f m=1
+C7 @1 Z[0]  0 4.01f m=1
+C8 @1 Y[1]  0 4f m=1
+C9 @1 Y[2]  0 4f m=1
+C10 @1 Y[3]  0 4f m=1
+C11 @1 Y[4]  0 4f m=1
+C12 @1 Y[5]  0 4f m=1
+C13 @1 Y[6]  0 4f m=1
+C14 @1 Y[0]  0 4.01f m=1
+x4 @1 Z[1] @1 Z[0]  VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+x1 @1 Z[2] @1 Z[1]  VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+x2 @1 Z[3] @1 Z[2]  VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+x3 @1 Z[4] @1 Z[3]  VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+x5 @1 Z[5] @1 Z[4]  VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+x6 @1 Z[6] @1 Z[5]  VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+x7 @1 Z[0] @1 Z[6]  VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+**** begin user architecture code
+**** end user architecture code
+.ends
+
+
+* expanding   symbol:  sky130_tests/test_res.sym # of pins=0
+
+.subckt test_res  
+*.ipin P
+*.ipin M
+*.ipin B
+Vr1 @1 P @1 net1  0
+.probe i( Vr1 )
+Vr2 @1 P @1 net2  0
+.probe i( Vr2 )
+Vr3 @1 P @1 net3  0
+.probe i( Vr3 )
+Vr4 @1 P @1 net4  0
+.probe i( Vr4 )
+Vr5 @1 P @1 net5  0
+.probe i( Vr5 )
+Vr6 @1 P @1 net6  0
+.probe i( Vr6 )
+Vr7 @1 P @1 net7  0
+.probe i( Vr7 )
+Vr8 @1 P @1 net8  0
+.probe i( Vr8 )
+Vr9 @1 P @1 net9  0
+.probe i( Vr9 )
+Vr10 @1 P @1 net10  0
+.probe i( Vr10 )
+Vr11 @1 P @1 net11  0
+.probe i( Vr11 )
+Vr12 @1 P @1 net12  0
+.probe i( Vr12 )
+Vr14 @1 P @1 net13  0
+.probe i( Vr14 )
+Vr13 @1 P @1 net14  0
+.probe i( Vr13 )
+**** begin user architecture code
+**** end user architecture code
+.ends
+
+
+* expanding   symbol:  sky130_tests/test_bipolar.sym # of pins=0
+
+.subckt test_bipolar  
+Vc1 @1 net2 @1 0  0
+.probe i( Vc1 )
+Vb1 @1 net1 @1 0  0
+.probe i( Vb1 )
+I0 @1 0 @1 net3  0
+Ve1 @1 net3 @1 E1  0
+.probe i( Ve1 )
+**** begin user architecture code
+**** end user architecture code
+.ends
+
+
+* expanding   symbol:  sky130_tests/test_diode.sym # of pins=0
+
+.subckt test_diode  
+I1 @1 net1 @1 0  0
+Vk1 @1 net1 @1 K1  0
+.probe i( Vk1 )
+Vk2 @1 net2 @1 K2  0
+.probe i( Vk2 )
+F1 @1 0 @1 net2  vk1 1
+**** begin user architecture code
+**** end user architecture code
+.ends
+
+
+* expanding   symbol:  sky130_tests/test_comparator.sym # of pins=0
+
+.subckt test_comparator  
+*.ipin CAL
+*.ipin PLUS
+*.ipin MINUS
+*.ipin EN
+*.ipin VSS
+*.ipin VCC
+*.opin SAOUT
+E5 @1 TEMPERAT @1 VSS  VOL=' temper ' MIN=' -200 ' MAX=' 200 '
+C38 @1 VSS  0 2p m=1
+C3 @1 SAOUTF  0 4f m=1
+C5 @1 GN  0 4f m=1
+C30 @1 SN  0 2f m=1
+C31 @1 OUTDIFF  0 4f m=1
+v2 @1 net1 @1 VSSI  0
+.probe i( v2 )
+v3 @1 net4 @1 VSSI  0
+.probe i( v3 )
+v4 @1 net3 @1 VSSI  0
+.probe i( v4 )
+v6 @1 net2 @1 VSSI  0
+.probe i( v6 )
+C1 @1 SAOUT  0 4f m=1
+v1 @1 net5 @1 VSSI  0
+.probe i( v1 )
+v5 @1 net6 @1 VSSI  0
+.probe i( v5 )
+C7 @1 GP  0 4f m=1
+x4 @1 CALBB @1 CALB  VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+x5 @1 CALB @1 CAL  VCC VSS not W_N=1 L_N=0.15 W_P=2 L_P=0.15 m=1
+C2 @1 ZERO0 @1 VCC  15f m=1
+C4 @1 ZERO1 @1 VCC  15f m=1
+C6 @1 ZERO2 @1 VCC  15f m=1
+**** begin user architecture code
+**** end user architecture code
+.ends
+

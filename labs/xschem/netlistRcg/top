@@ -1,0 +1,26 @@
+entity top is
+end top ;
+
+architecture arch_top of top is
+
+component test_nmos 
+end component ;
+
+component test_pmos 
+end component ;
+
+component test_inv 
+end component ;
+
+component test_res 
+end component ;
+
+component test_bipolar 
+end component ;
+
+component test_diode 
+end component ;
+
+component test_comparator 
+end component ;
+
